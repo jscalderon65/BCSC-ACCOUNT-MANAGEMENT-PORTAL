@@ -6,7 +6,10 @@ import { useLocalStorage } from "@hooks/localStorage";
 import LoadingAnimation from "@components/LoadingAnimation";
 import { CLIENT_TOKEN_STORAGE_NAME } from "@constants/app-config";
 import { currentPortalProfile } from "@/app/services/portalProfile";
-
+import {
+  showGeneralErrorAlert,
+  showUnauthorizedAlert,
+} from "@notifications/app-notifications";
 interface AuthGuardProps {
   children: ReactNode;
 }
@@ -23,15 +26,25 @@ const AuthGuard = ({ children }: AuthGuardProps) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const requiresAuth = pagesWithAuthGuard.includes(pathName);
-
-    if (requiresAuth && !clientTokenStorage) {
-      router.push(redirectRoute);
-    } else {
-      currentPortalProfile(clientTokenStorage).then((data) => {
+    if (typeof window === "undefined") return;
+    const verifyToken = async () => {
+      const requiresAuth = pagesWithAuthGuard.includes(pathName);
+      if (requiresAuth && !clientTokenStorage) {
+        router.push(redirectRoute);
+        showUnauthorizedAlert();
+        return;
+      }
+      try {
+        await currentPortalProfile();
+      } catch (error) {
+        localStorage.removeItem(CLIENT_TOKEN_STORAGE_NAME);
+        router.replace("/");
+        showGeneralErrorAlert();
+      } finally {
         setLoading(false);
-      });
-    }
+      }
+    };
+    verifyToken();
   }, [pathName, clientTokenStorage, router]);
 
   if (loading) {

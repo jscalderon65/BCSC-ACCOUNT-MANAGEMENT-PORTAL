@@ -35,6 +35,9 @@
       "@guards/*": [
         "./src/app/common/guards/*"
       ],
+      "@notifications/*": [
+        "./src/app/common/notifications/*"
+      ],
       "@components/*": [
         "./src/app/components/*"
       ],

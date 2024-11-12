@@ -25,11 +25,7 @@ export const validateTwoFaNumber = async (
   return response.data;
 };
 
-export const currentPortalProfile = async (token: string): Promise<any> => {
-  const response = await axiosInstance.get("/customer/portal-profile/me", {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const currentPortalProfile = async (): Promise<any> => {
+  const response = await axiosInstance.get("/customer/portal-profile/me");
   return response.data;
 };
