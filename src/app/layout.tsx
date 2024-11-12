@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import "animate.css";
 import "@/app/globals.css";
+import "@/app/index-page.css";
+import "@/app/animations.css";
 import {
   METADATA_DEFAULT_TITLE,
   METADATA_DESCRIPTION,

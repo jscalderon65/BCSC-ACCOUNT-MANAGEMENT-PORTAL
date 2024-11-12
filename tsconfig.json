@@ -28,6 +28,15 @@
       ],
       "@constants/*": [
         "./src/app/common/constants/*"
+      ],
+      "@hooks/*": [
+        "./src/app/common/hooks/*"
+      ],
+      "@guards/*": [
+        "./src/app/common/guards/*"
+      ],
+      "@components/*": [
+        "./src/app/components/*"
       ]
     }
   },

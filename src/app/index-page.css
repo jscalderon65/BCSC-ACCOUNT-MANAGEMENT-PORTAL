@@ -1,0 +1,47 @@
+.register-button {
+  background-color: #0063a7;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 160px;
+  height: 46px;
+}
+
+.register-button:hover {
+  background-color: #004c83;
+}
+
+.account-button {
+  background-color: #ffffff;
+  border: 1px solid var(--font-color);
+  color: var(--font-color);
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  width: 160px;
+  height: 46px;
+}
+
+.presentation-part-1-background {
+  background-color: #ceeefd;
+}
+
+.presentation-part-2-background {
+  background-color: #fef3c7;
+}
+
+.presentation-part-3-background {
+  background-color: #d4e0f9;
+}
