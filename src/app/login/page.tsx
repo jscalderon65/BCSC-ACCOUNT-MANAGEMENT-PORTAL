@@ -74,7 +74,8 @@ const Login = () => {
       setClientTokenStorageData(response);
       router.push("/portal");
     } catch (error: any) {
-      setLoginError(JSON.stringify(error.message));
+      console.log(error);
+      setLoginError(JSON.stringify(error.response.data.message));
     }
   };
 
