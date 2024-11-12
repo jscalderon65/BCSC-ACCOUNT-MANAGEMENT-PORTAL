@@ -1,7 +1,12 @@
 import React from "react";
+import AuthGuard from "@guards/AuthGuard";
 
 const MainPortal = () => {
-  return <div>MainPortal</div>;
+  return (
+    <AuthGuard>
+      <div>No puedes entrar</div>
+    </AuthGuard>
+  );
 };
 
 export default MainPortal;
