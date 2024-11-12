@@ -4,6 +4,7 @@ import "animate.css";
 import "@/app/globals.css";
 import "@/app/index-page.css";
 import "@/app/animations.css";
+import "@/app/login.css";
 import {
   METADATA_DEFAULT_TITLE,
   METADATA_DESCRIPTION,
@@ -14,6 +15,7 @@ import {
   METADATA_OPEN_GRAPH_TITLE,
   METADATA_TITLE_TEMPLATE,
 } from "@constants/metadata";
+import IndexFooter from "./components/IndexFooter";
 
 const BCSC_MAIN_FONT = localFont({
   src: "./fonts/Kamerik-105-W00-Bold.ttf",
@@ -45,7 +47,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${BCSC_MAIN_FONT.className}`}>{children}</body>
+      <body className={`${BCSC_MAIN_FONT.className}`}>
+        {children}
+        <IndexFooter />
+      </body>
     </html>
   );
 }

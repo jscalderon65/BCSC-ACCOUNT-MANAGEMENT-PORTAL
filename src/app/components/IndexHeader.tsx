@@ -4,12 +4,24 @@ import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose, MdShield, MdAccessibility } from "react-icons/md";
 import { IconType } from "react-icons";
+import { useRouter } from "next/navigation";
 
-const IndexHeader: React.FC = () => {
+type IndexHeaderProps = {
+  showButtons?: boolean;
+};
+
+const IndexHeader: React.FC<IndexHeaderProps> = ({ showButtons = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const router = useRouter();
+
+  const redirectTo = (path: string): void => {
+    router.push(path);
+  };
 
   const Logo: React.FC = () => (
     <Image
+      className="cursor-pointer"
+      onClick={(): void => redirectTo("/")}
       src="/images/index-header-logo.png"
       alt="index-header-logo.png"
       width={200}
@@ -18,12 +30,23 @@ const IndexHeader: React.FC = () => {
     />
   );
 
-  const NavButtons: React.FC = () => (
-    <>
-      <button className="register-button md:mr-[10px]">Ingrese aquí</button>
-      <button className="account-button">Abrir Caja Plus</button>
-    </>
-  );
+  const NavButtons: React.FC = () =>
+    showButtons ? (
+      <>
+        <button
+          onClick={(): void => redirectTo("/login")}
+          className="register-button md:mr-[10px]"
+        >
+          Ingrese aquí
+        </button>
+        <button
+          onClick={(): void => redirectTo("/register")}
+          className="account-button"
+        >
+          Abrir Caja Plus
+        </button>
+      </>
+    ) : null;
 
   type MenuItemProps = {
     text: string;

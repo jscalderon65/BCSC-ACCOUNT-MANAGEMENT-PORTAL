@@ -1,0 +1,18 @@
+.login-button {
+  background-color: #0063a7;
+  border: none;
+  color: #ffffff;
+  padding: 8px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  height: 46px;
+}
+
+.login-button:hover {
+  background-color: #004c83;
+}

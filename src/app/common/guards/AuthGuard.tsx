@@ -1,36 +1,23 @@
 "use client";
 
-import { ReactNode, useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useLocalStorage } from "@hooks/localStorage";
-import lottie from "lottie-web";
 import LoadingAnimation from "@components/LoadingAnimation";
+import { CLIENT_TOKEN_STORAGE_NAME } from "@constants/app-config";
 
 interface AuthGuardProps {
   children: ReactNode;
 }
 
 const AuthGuard = ({ children }: AuthGuardProps) => {
-  const animationContainer = useRef(null);
-
-  useEffect(() => {
-    if (animationContainer.current) {
-      lottie.loadAnimation({
-        container: animationContainer.current,
-        renderer: "svg",
-        loop: true,
-        autoplay: true,
-        path: "/lottie/loading.json",
-      });
-      lottie.setSpeed(4);
-    }
-  }, []);
-
   const router = useRouter();
   const pathName = usePathname();
-  const redirectRoute = "/";
+
+  const redirectRoute = process.env.REDIRECT_AUTH_MIDDLEWARE_ROUTE || "/";
   const pagesWithAuthGuard = ["/home"];
-  const clientTokenStorageName = "portalProfileId";
+  const clientTokenStorageName = CLIENT_TOKEN_STORAGE_NAME;
+
   const [clientTokenStorage] = useLocalStorage(clientTokenStorageName, null);
   const [loading, setLoading] = useState(true);
 
@@ -47,6 +34,7 @@ const AuthGuard = ({ children }: AuthGuardProps) => {
   if (loading) {
     return <LoadingAnimation />;
   }
+  return children;
 };
 
 export default AuthGuard;

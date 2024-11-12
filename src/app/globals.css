@@ -161,3 +161,11 @@ body {
 .footer-background {
   background: #00253e;
 }
+.custom-input {
+  @apply rounded-lg border-solid border py-[8px] px-[16px] focus:outline-none;
+}
+.custom-input-select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
