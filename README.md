@@ -1,10 +1,24 @@
-<img src="assets/Banco_Caja_Social_logo.svg.png"></img>
+<img src="./assets/Banco_Caja_Social_logo.png"></img>
 
 # BCSC-ACCOUNT-MANAGEMENT-PORTAL
 
 ## Descripción del proyecto
 
 <p>Plataforma transaccional para gestionar las operaciones de las nuevas cuentas de ahorro <b>Caja Plus </b> del <a href="https://www.bancocajasocial.com/">Banco Caja Social.</a></p>
+
+<img src="./assets/index.png"></img>
+
+#
+
+<img src="./assets/login.png"></img>
+
+#
+
+<img src="./assets/portal.png"></img>
+
+#
+
+<img src="./assets/rea.png"></img>
 
 ## Técnologias del proyecto
 

@@ -12,7 +12,7 @@ const MainPortal = () => {
   const { savingAccount, isLoading } = useSavingAccount();
   return (
     <AuthGuard>
-      {!isLoading ? (
+      {!isLoading && savingAccount ? (
         <div
           style={hypnoticV1}
           className="main-container flex items-center pb-[40px] animate__animated animate__fadeIn"
