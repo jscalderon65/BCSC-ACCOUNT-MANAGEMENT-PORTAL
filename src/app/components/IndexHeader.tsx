@@ -7,7 +7,9 @@ import { IconType } from "react-icons";
 import { usePathname } from "next/navigation";
 import {
   INDEX_APP_ROUTE,
+  LOGIN_ROUTE,
   PORTAL_ROUTE,
+  REGISTER_ROUTE,
 } from "@/app/common/constants/appConfig";
 import Link from "next/link";
 
@@ -51,6 +53,22 @@ const IndexHeader: React.FC = () => {
             <button className="register-button md:mr-[10px] justify-center font-bold">
               <MdLogout className="mr-[10px]" />
               <p>Cerrar sesión</p>
+            </button>
+          </Link>
+        );
+      case LOGIN_ROUTE:
+        return (
+          <Link href="/register">
+            <button className="account-button bold justify-center font-bold">
+              <p>Abrir Caja Plus</p>
+            </button>
+          </Link>
+        );
+      case REGISTER_ROUTE:
+        return (
+          <Link href="/login">
+            <button className="register-button md:mr-[10px] justify-center font-bold">
+              <p>Ingrese aquí</p>
             </button>
           </Link>
         );

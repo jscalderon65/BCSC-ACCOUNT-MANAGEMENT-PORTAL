@@ -9,10 +9,10 @@ import PortalActions from "../components/PortalActions";
 import { hypnoticV1 } from "../common/helpers/patternStyles";
 
 const MainPortal = () => {
-  const { savingAccount, isLoading } = useSavingAccount();
+  const { savingAccount } = useSavingAccount();
   return (
     <AuthGuard>
-      {!isLoading && savingAccount ? (
+      {savingAccount ? (
         <div
           style={hypnoticV1}
           className="main-container flex items-center pb-[40px] animate__animated animate__fadeIn"

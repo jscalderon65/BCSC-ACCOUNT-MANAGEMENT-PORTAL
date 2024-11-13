@@ -103,7 +103,10 @@ const Register = () => {
     },
   };
   return (
-    <div style={netV2} className="main-container pb-[40px] flex items-center">
+    <div
+      style={netV2}
+      className="main-container pb-[40px] flex items-center animate__animated animate__fadeIn"
+    >
       <div className="main-background rounded-lg p-[20px] mt-[40px] w-[90vw] md:w-[40vw]">
         <form onSubmit={handleSubmmitRegister(onSubmit)}>
           <h1 className="text-3xl font-bold mb-[20px]">
