@@ -11,5 +11,5 @@ export interface PortalProfileI {
   createdAt: string;
   updatedAt: string;
   __v: number;
-  two_factor_authentication_number: string | null;
+  two_factor_authentication_number?: string | null;
 }

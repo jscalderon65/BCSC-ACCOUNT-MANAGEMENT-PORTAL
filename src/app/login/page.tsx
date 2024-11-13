@@ -93,7 +93,7 @@ const Login = () => {
   return (
     <div
       style={netV2}
-      className="main-container flex justify-center items-center presentation-part-1-background"
+      className="main-container flex justify-center items-center"
     >
       <div className="md:w-[30vw] h-auto w-[80vw] main-background rounded-lg p-[20px] flex flex-col justify-center">
         <div className="mb-[40px]">

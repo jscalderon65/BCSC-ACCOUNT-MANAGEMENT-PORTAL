@@ -10,3 +10,8 @@ export interface SavingAccountI {
   updatedAt: string;
   __v: number;
 }
+
+export interface NewSavingAccountI {
+  balance: number;
+  is_active: boolean;
+}
