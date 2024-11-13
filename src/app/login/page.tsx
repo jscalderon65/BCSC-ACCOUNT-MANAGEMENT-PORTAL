@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import { useDocumentTypes } from "@hooks/useDocumentTypes";
 import { loginService } from "@services/portalProfile";
-import { CLIENT_TOKEN_STORAGE_NAME } from "@constants/app-config";
+import { CLIENT_TOKEN_STORAGE_NAME } from "@/app/common/constants/appConfig";
 import { DocumentTypeI } from "@interfaces/utils";
 import { LoginBodyI } from "@interfaces/login";
 import TwoFaForm from "../components/TwoFaForm";

@@ -3,7 +3,7 @@ import {
   BACKEND_URL,
   CLIENT_TOKEN_STORAGE_NAME,
   LOGIN_ROUTE,
-} from "@constants/app-config";
+} from "@/app/common/constants/appConfig";
 import { showGeneralErrorAlert } from "@/app/common/notifications/AppNotifications";
 
 const baseUrlBackend = BACKEND_URL;

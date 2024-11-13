@@ -8,6 +8,7 @@ import {
 } from "react-icons/fa";
 import { SavingAccountI } from "@interfaces/savingAccount";
 import { formatToCOP } from "@helpers/financial";
+import toast from "react-hot-toast";
 type SavingsAccountCardProps = {
   savingAccount: SavingAccountI | null;
 };
@@ -19,6 +20,7 @@ const SavingsAccountCard: React.FC<SavingsAccountCardProps> = ({
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
+    toast.success("¡Copiado en el porta papeles!");
   };
 
   return (
@@ -34,7 +36,7 @@ const SavingsAccountCard: React.FC<SavingsAccountCardProps> = ({
           <FaCreditCard className="w-8 h-8 title-color" />
         </div>
 
-        <div className="space-y-6">
+        <div>
           <div>
             <p className="text-gray-300 text-sm mb-1  title-color">
               Titular de la Cuenta
@@ -44,31 +46,33 @@ const SavingsAccountCard: React.FC<SavingsAccountCardProps> = ({
               {savingAccount?.customer_id.last_name}
             </p>
           </div>
-
-          <div className="flex items-center justify-between">
+          <br />
+          <div className="flex md:justify-between md:flex-row flex-col">
             <div>
-              <p className="text-gray-300 text-sm mb-1  title-color">
-                Número de Cuenta
-              </p>
-              <div className="flex items-center gap-2">
-                <p className="text-xl font-medium">
-                  {" "}
-                  {savingAccount?.account_number}
+              <div>
+                <p className="text-gray-300 text-sm mb-1  title-color">
+                  Número de Cuenta
                 </p>
-                <IconButton
-                  onClick={() =>
-                    copyToClipboard(savingAccount?.account_number || "")
-                  }
-                  className="text-gray-300 hover:bg-white/10"
-                  size="small"
-                >
-                  <FaRegCopy className="w-4 h-4" />
-                </IconButton>
+                <div className="flex items-center gap-2">
+                  <p className="text-2xl font-medium">
+                    {" "}
+                    {savingAccount?.account_number}
+                  </p>
+                  <IconButton
+                    onClick={() =>
+                      copyToClipboard(savingAccount?.account_number || "")
+                    }
+                    className="text-gray-300 hover:bg-white/10"
+                    size="small"
+                  >
+                    <FaRegCopy className="w-4 h-4" />
+                  </IconButton>
+                </div>
               </div>
             </div>
-
-            <div className="text-right">
-              <p className="text-gray-300 text-sm mb-1  title-color">
+            <br />
+            <div>
+              <p className=" text-gray-300 text-sm mb-1  title-color">
                 Saldo Disponible
               </p>
               <div className="flex items-center gap-2">
@@ -93,7 +97,7 @@ const SavingsAccountCard: React.FC<SavingsAccountCardProps> = ({
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/10">
+        <div className="pt-8 border-t border-white/10">
           <div className="grid-cols-3 gap-4 text-center w-full flex justify-between">
             <div>
               <p className="text-gray-300 text-sm mb-1  title-color">

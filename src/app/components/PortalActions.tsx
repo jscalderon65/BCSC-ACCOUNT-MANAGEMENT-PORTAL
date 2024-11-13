@@ -20,16 +20,23 @@ const PortalActions: FC<ActionHeaderProps> = ({
           </Typography>
         </div>
 
-        <div className="flex flex-wrap gap-3 w-full sm:w-auto">
+        <div className="flex flex-wrap gap-3 w-full md:w-auto md:flex-row flex-col md:justify-end">
           <Link href="/transactions" className="flex-1 sm:flex-initial">
-            <button className="register-button w-full sm:w-auto font-bold">
-              <FiSend className="mr-[10px]" /> <p>Realizar transacción</p>
+            <button
+              style={{ width: "100%" }}
+              className="register-button w-full sm:w-auto font-bold flex"
+            >
+              <FiSend className="mr-[10px]" />
+              <p className="text-center w-full">Realizar transacción</p>
             </button>
           </Link>
           <Link href="/effective-anual-rate" className="flex-1 sm:flex-initial">
-            <button className="account-button w-full sm:w-auto font-bold">
+            <button
+              style={{ width: "100%" }}
+              className="account-button w-full sm:w-auto font-bold"
+            >
               <FiTrendingUp className="mr-[10px]" />
-              <p>Ver Rendimiento Anual</p>
+              <p className="text-center w-full">Ver Rendimiento Anual</p>
             </button>
           </Link>
         </div>

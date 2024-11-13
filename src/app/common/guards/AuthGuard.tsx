@@ -4,14 +4,13 @@ import { ReactNode, useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { useLocalStorage } from "@hooks/localStorage";
 import LoadingAnimation from "@components/LoadingAnimation";
-import { CLIENT_TOKEN_STORAGE_NAME } from "@constants/app-config";
+import { CLIENT_TOKEN_STORAGE_NAME } from "@/app/common/constants/appConfig";
 import { currentPortalProfile } from "@/app/services/portalProfile";
 import {
   showGeneralErrorAlert,
   showUnauthorizedAlert,
 } from "@/app/common/notifications/AppNotifications";
 
-import { toast } from "react-hot-toast";
 interface AuthGuardProps {
   children: ReactNode;
 }
@@ -32,9 +31,8 @@ const AuthGuard = ({ children }: AuthGuardProps) => {
     const verifyToken = async () => {
       const requiresAuth = pagesWithAuthGuard.includes(pathName);
       if (requiresAuth && !clientTokenStorage) {
-        /* showUnauthorizedAlert(); */
-        toast.success("You did it!");
         router.push(redirectRoute);
+        showUnauthorizedAlert();
         return;
       }
       try {

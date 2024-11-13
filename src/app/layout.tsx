@@ -52,7 +52,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${BCSC_MAIN_FONT.className}`}>
         <IndexHeader />
-        <Toaster position="bottom-center" />
+        <Toaster position="top-center" />
         {children}
         <IndexFooter />
       </body>

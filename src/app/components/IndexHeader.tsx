@@ -5,7 +5,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose, MdShield, MdAccessibility } from "react-icons/md";
 import { IconType } from "react-icons";
 import { usePathname } from "next/navigation";
-import { INDEX_APP_ROUTE } from "@constants/app-config";
+import { INDEX_APP_ROUTE } from "@/app/common/constants/appConfig";
 import Link from "next/link";
 
 const IndexHeader: React.FC = () => {

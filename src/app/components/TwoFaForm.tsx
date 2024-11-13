@@ -4,7 +4,7 @@ import { LoginBodyI, TwoFaBodyI } from "../common/interfaces/login";
 import { Controller, useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useLocalStorage } from "../common/hooks/localStorage";
-import { CLIENT_TOKEN_STORAGE_NAME } from "../common/constants/app-config";
+import { CLIENT_TOKEN_STORAGE_NAME } from "../common/constants/appConfig";
 import { validateTwoFaNumber } from "../services/portalProfile";
 import { Alert, AlertTitle, TextField } from "@mui/material";
 
