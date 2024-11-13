@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import IndexHeader from "@components/IndexHeader";
 import { useForm, Controller } from "react-hook-form";
 import TextField from "@mui/material/TextField";
 import {
@@ -20,11 +19,8 @@ import { CLIENT_TOKEN_STORAGE_NAME } from "@/app/common/constants/appConfig";
 import { DocumentTypeI } from "@interfaces/utils";
 import { LoginBodyI } from "@interfaces/login";
 import TwoFaForm from "../components/TwoFaForm";
-import {
-  hypnoticV1,
-  netV2,
-  snakesStyle,
-} from "../common/helpers/patternStyles";
+import { netV2 } from "../common/helpers/patternStyles";
+
 const Login = () => {
   const [temporalToken, setTemporalToken] = useState<string | null>(null);
 
@@ -84,10 +80,10 @@ const Login = () => {
     setLoginError(null);
     try {
       setLoading(true);
-      const loginTemporalToken: any = await loginService(data);
-      setTemporalToken(loginTemporalToken);
+      const loginTemporalToken: string = await loginService(data);
       setLoginData(data);
       setLoading(false);
+      setTemporalToken(loginTemporalToken);
     } catch (error: any) {
       setLoading(false);
       setLoginError(JSON.stringify(error.response.data.message));

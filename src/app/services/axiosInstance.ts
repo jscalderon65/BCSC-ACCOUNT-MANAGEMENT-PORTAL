@@ -2,10 +2,10 @@ import axios from "axios";
 import {
   BACKEND_URL,
   CLIENT_TOKEN_STORAGE_NAME,
+  LOGIN_PATH,
   LOGIN_ROUTE,
 } from "@/app/common/constants/appConfig";
 import { showGeneralErrorAlert } from "@/app/common/notifications/AppNotifications";
-import { encryptData } from "../common/helpers/crypto";
 
 const baseUrlBackend = BACKEND_URL;
 const clientTokenStorageName = CLIENT_TOKEN_STORAGE_NAME;
@@ -34,10 +34,12 @@ axiosInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
+    if (
+      error.response &&
+      error.response.status === 401 &&
+      error.response.data.path !== LOGIN_PATH
+    ) {
       window.location.href = loginRoute;
-    } else {
-      showGeneralErrorAlert();
     }
     return Promise.reject(error);
   },

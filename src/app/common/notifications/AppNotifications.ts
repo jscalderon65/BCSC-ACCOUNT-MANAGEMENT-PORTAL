@@ -21,12 +21,6 @@ export const showGeneralErrorAlert = () => {
     confirmButtonColor: "#004481",
     allowOutsideClick: false,
     timer: 5000,
-    willClose: () => {
-      // Esta función se ejecutará justo antes de que la alerta se cierre
-      return new Promise((resolve) => {
-        setTimeout(resolve, 5000);
-      });
-    },
   });
 };
 
@@ -50,11 +44,5 @@ export const showSessionExpiredAlert = () => {
     confirmButtonText: "Iniciar Sesión",
     confirmButtonColor: "#004481",
     allowOutsideClick: false,
-    willClose: () => {
-      // Esta función se ejecutará justo antes de que la alerta se cierre
-      return new Promise((resolve) => {
-        setTimeout(resolve, 5000);
-      });
-    },
   });
 };
