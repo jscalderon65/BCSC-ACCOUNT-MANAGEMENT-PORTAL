@@ -18,7 +18,7 @@ const SavingsGrowthDashboard = () => {
     useEarLiquidation();
 
   return (
-    <div className="p-6  bg-white rounded-xl ">
+    <div className="p-6  bg-white rounded-lg w-[90vw] md:w-[60vw] shadow-2">
       <h1 className="text-2xl font-bold text-gray-800">
         Crecimiento de tus Ahorros
       </h1>
@@ -30,8 +30,8 @@ const SavingsGrowthDashboard = () => {
               <p>Capital Actual</p>
               <FaPiggyBank className="text-2xl  text-green-500" />
             </div>
-            <br />
           </div>
+          <br />
           <div className="text-2xl font-bold text-gray-900">
             {formatToCOP(lastLiquidationBase)}
             <p className="text-xs text-gray-500">Base de liquidación actual</p>

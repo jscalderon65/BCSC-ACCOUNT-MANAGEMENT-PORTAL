@@ -74,14 +74,13 @@ const TwoFaForm: React.FC<TwoFaFormProps> = ({ loginData, temporalToken }) => {
               label="Código"
               variant="outlined"
               fullWidth
-              className="mb-[20px]"
               error={!!errorsTwoFa.two_factor_authentication_number}
               helperText={errorsTwoFa.two_factor_authentication_number?.message}
             />
           );
         }}
       />
-
+      <div className="mb-[20px]"></div>
       {loading ? (
         <button className="login-button w-full">Verificando...</button>
       ) : (

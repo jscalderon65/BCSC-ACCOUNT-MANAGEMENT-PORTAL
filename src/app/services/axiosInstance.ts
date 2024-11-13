@@ -5,6 +5,7 @@ import {
   LOGIN_ROUTE,
 } from "@/app/common/constants/appConfig";
 import { showGeneralErrorAlert } from "@/app/common/notifications/AppNotifications";
+import { encryptData } from "../common/helpers/crypto";
 
 const baseUrlBackend = BACKEND_URL;
 const clientTokenStorageName = CLIENT_TOKEN_STORAGE_NAME;

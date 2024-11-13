@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { encryptData } from "../helpers/crypto";
 export const useLocalStorage = (key: string, initialValue: any) => {
   const [storedValue, setStoredValue] = useState(() => {
     try {
@@ -14,11 +15,13 @@ export const useLocalStorage = (key: string, initialValue: any) => {
       const valueToStore =
         value instanceof Function ? value(storedValue) : value;
       setStoredValue(valueToStore);
-      window.localStorage.setItem(key, valueToStore);
+      const encryptedData = encryptData(valueToStore);
+      window.localStorage.setItem(key, encryptedData);
     } catch (error) {
       console.log(error);
     }
   };
+
   return [storedValue, setValue];
 };
 

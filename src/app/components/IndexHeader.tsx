@@ -2,10 +2,13 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { MdClose, MdShield, MdAccessibility } from "react-icons/md";
+import { MdClose, MdShield, MdAccessibility, MdLogout } from "react-icons/md";
 import { IconType } from "react-icons";
 import { usePathname } from "next/navigation";
-import { INDEX_APP_ROUTE } from "@/app/common/constants/appConfig";
+import {
+  INDEX_APP_ROUTE,
+  PORTAL_ROUTE,
+} from "@/app/common/constants/appConfig";
 import Link from "next/link";
 
 const IndexHeader: React.FC = () => {
@@ -25,21 +28,36 @@ const IndexHeader: React.FC = () => {
     </Link>
   );
 
-  const NavButtons: React.FC = () =>
-    pathname === INDEX_APP_ROUTE ? (
-      <>
-        <Link href="/login">
-          <button className="register-button md:mr-[10px] justify-center font-bold">
-            <p>Ingrese aquí</p>
-          </button>
-        </Link>
-        <Link href="/register">
-          <button className="account-button bold justify-center font-bold">
-            <p>Abrir Caja Plus</p>
-          </button>
-        </Link>
-      </>
-    ) : null;
+  const NavButtons: React.FC = () => {
+    switch (pathname) {
+      case INDEX_APP_ROUTE:
+        return (
+          <>
+            <Link href="/login">
+              <button className="register-button md:mr-[10px] justify-center font-bold">
+                <p>Ingrese aquí</p>
+              </button>
+            </Link>
+            <Link href="/register">
+              <button className="account-button bold justify-center font-bold">
+                <p>Abrir Caja Plus</p>
+              </button>
+            </Link>
+          </>
+        );
+      case PORTAL_ROUTE:
+        return (
+          <Link href="/login">
+            <button className="register-button md:mr-[10px] justify-center font-bold">
+              <MdLogout className="mr-[10px]" />
+              <p>Cerrar sesión</p>
+            </button>
+          </Link>
+        );
+      default:
+        return null;
+    }
+  };
 
   type MenuItemProps = {
     text: string;

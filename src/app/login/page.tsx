@@ -126,11 +126,7 @@ const Login = () => {
               control={controlFormLogin}
               rules={documentTypesRules}
               render={({ field: { onChange, value, ...field } }) => (
-                <FormControl
-                  fullWidth
-                  error={!!errorsLogin.document_type_id}
-                  className="mb-[20px]"
-                >
+                <FormControl fullWidth error={!!errorsLogin.document_type_id}>
                   <InputLabel id="tipo-documento-label">
                     Tipo de documento
                   </InputLabel>
@@ -167,7 +163,7 @@ const Login = () => {
                 </FormControl>
               )}
             />
-
+            <div className="mb-[20px]"></div>
             <Controller
               name="document_number"
               control={controlFormLogin}
@@ -178,7 +174,6 @@ const Login = () => {
                   label="Documento de identidad"
                   variant="outlined"
                   fullWidth
-                  className="mb-[20px]"
                   error={!!errorsLogin.document_number}
                   helperText={errorsLogin.document_number?.message}
                   onChange={(e) => {
@@ -190,7 +185,7 @@ const Login = () => {
                 />
               )}
             />
-
+            <div className="mb-[20px]"></div>
             <Controller
               name="password"
               control={controlFormLogin}
@@ -202,13 +197,12 @@ const Login = () => {
                   label="Contraseña"
                   variant="outlined"
                   fullWidth
-                  className="mb-[20px]"
                   error={!!errorsLogin.password}
                   helperText={errorsLogin.password?.message}
                 />
               )}
             />
-
+            <div className="mb-[20px]"></div>
             {loading ? (
               <button className="login-button w-full">Verificando...</button>
             ) : (
