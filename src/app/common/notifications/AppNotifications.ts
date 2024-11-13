@@ -8,6 +8,7 @@ export const showUnauthorizedAlert = () => {
     confirmButtonText: "Entendido",
     confirmButtonColor: "#004481",
     allowOutsideClick: false,
+    timer: 5000,
   });
 };
 
@@ -19,6 +20,25 @@ export const showGeneralErrorAlert = () => {
     confirmButtonText: "Aceptar",
     confirmButtonColor: "#004481",
     allowOutsideClick: false,
+    timer: 5000,
+    willClose: () => {
+      // Esta función se ejecutará justo antes de que la alerta se cierre
+      return new Promise((resolve) => {
+        setTimeout(resolve, 5000);
+      });
+    },
+  });
+};
+
+export const showCustomErrorAlert = (error: string) => {
+  Swal.fire({
+    title: "Ha ocurrido un error",
+    text: error,
+    icon: "error",
+    confirmButtonText: "Aceptar",
+    confirmButtonColor: "#004481",
+    allowOutsideClick: false,
+    timer: 5000,
   });
 };
 
@@ -30,9 +50,11 @@ export const showSessionExpiredAlert = () => {
     confirmButtonText: "Iniciar Sesión",
     confirmButtonColor: "#004481",
     allowOutsideClick: false,
-  }).then((result) => {
-    if (result.isConfirmed) {
-      window.location.href = "/login";
-    }
+    willClose: () => {
+      // Esta función se ejecutará justo antes de que la alerta se cierre
+      return new Promise((resolve) => {
+        setTimeout(resolve, 5000);
+      });
+    },
   });
 };

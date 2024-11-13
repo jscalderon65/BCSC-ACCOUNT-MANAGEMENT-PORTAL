@@ -4,10 +4,7 @@ import {
   CLIENT_TOKEN_STORAGE_NAME,
   LOGIN_ROUTE,
 } from "@constants/app-config";
-import {
-  showGeneralErrorAlert,
-  showSessionExpiredAlert,
-} from "@notifications/app-notifications";
+import { showGeneralErrorAlert } from "@/app/common/notifications/AppNotifications";
 
 const baseUrlBackend = BACKEND_URL;
 const clientTokenStorageName = CLIENT_TOKEN_STORAGE_NAME;
@@ -38,7 +35,6 @@ axiosInstance.interceptors.response.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       window.location.href = loginRoute;
-      showSessionExpiredAlert();
     } else {
       showGeneralErrorAlert();
     }

@@ -9,7 +9,9 @@ import { currentPortalProfile } from "@/app/services/portalProfile";
 import {
   showGeneralErrorAlert,
   showUnauthorizedAlert,
-} from "@notifications/app-notifications";
+} from "@/app/common/notifications/AppNotifications";
+
+import { toast } from "react-hot-toast";
 interface AuthGuardProps {
   children: ReactNode;
 }
@@ -30,16 +32,17 @@ const AuthGuard = ({ children }: AuthGuardProps) => {
     const verifyToken = async () => {
       const requiresAuth = pagesWithAuthGuard.includes(pathName);
       if (requiresAuth && !clientTokenStorage) {
+        /* showUnauthorizedAlert(); */
+        toast.success("You did it!");
         router.push(redirectRoute);
-        showUnauthorizedAlert();
         return;
       }
       try {
         await currentPortalProfile();
       } catch (error) {
-        localStorage.removeItem(CLIENT_TOKEN_STORAGE_NAME);
-        router.replace("/");
         showGeneralErrorAlert();
+        localStorage.removeItem(CLIENT_TOKEN_STORAGE_NAME);
+        router.push(redirectRoute);
       } finally {
         setLoading(false);
       }

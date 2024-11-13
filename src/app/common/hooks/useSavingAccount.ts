@@ -1,11 +1,13 @@
 "use client";
-import { getDocumentTypes } from "@services/utils";
 import { useState, useEffect } from "react";
-import { DocumentTypeI } from "@interfaces/utils";
+import { currentSavingAccount } from "@services/savingAccount";
+import { SavingAccountI } from "@interfaces/savingAccount";
 import { showCustomErrorAlert } from "../notifications/AppNotifications";
 
-export const useDocumentTypes = () => {
-  const [documentTypes, setDocumentTypes] = useState<DocumentTypeI[]>([]);
+export const useSavingAccount = () => {
+  const [savingAccount, setSavingAccount] = useState<SavingAccountI | null>(
+    null,
+  );
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -13,10 +15,10 @@ export const useDocumentTypes = () => {
     try {
       setIsLoading(true);
       setError(null);
-      const response = await getDocumentTypes();
-      setDocumentTypes(response);
+      const response = await currentSavingAccount();
+      setSavingAccount(response);
     } catch (err: any) {
-      setError(err.message || "Error al cargar los tipos de documento");
+      setError(err.message || "Error al cargar los datos de la cuenta");
       showCustomErrorAlert(err.message);
     } finally {
       setIsLoading(false);
@@ -32,7 +34,7 @@ export const useDocumentTypes = () => {
   };
 
   return {
-    documentTypes,
+    savingAccount,
     isLoading,
     error,
     refetch,

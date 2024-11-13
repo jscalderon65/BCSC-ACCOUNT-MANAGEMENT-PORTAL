@@ -2,11 +2,17 @@
 import React from "react";
 import Image from "next/image";
 import { FaCheck } from "react-icons/fa";
+import {
+  hypnoticV1,
+  snakesStyle,
+  netV2,
+} from "../common/helpers/patternStyles";
 
 const IndexContent = () => {
   return (
     <div className="main-container overflow-hidden">
       <div
+        style={hypnoticV1}
         className={
           "p-5 w-full min-h-[50vh] h-auto presentation-part-1-background  flex justify-center items-center animate__animated animate__fadeInLeft"
         }
@@ -36,6 +42,7 @@ const IndexContent = () => {
       </div>
 
       <div
+        style={snakesStyle}
         className={
           "p-5 w-full min-h-[50vh] h-auto presentation-part-2-background flex justify-center items-center animate__animated animate__fadeInRight"
         }
@@ -79,6 +86,7 @@ const IndexContent = () => {
       </div>
 
       <div
+        style={netV2}
         className={
           "p-5 w-full min-h-[50vh] h-auto presentation-part-3-background  flex justify-center items-center animate__animated animate__fadeInLeft"
         }

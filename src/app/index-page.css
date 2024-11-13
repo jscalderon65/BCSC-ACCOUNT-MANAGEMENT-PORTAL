@@ -10,8 +10,11 @@
   font-family: "Poppins", sans-serif;
   border-radius: 0.5rem;
   cursor: pointer;
-  width: 160px;
+  min-width: 160px;
+  width: auto;
   height: 46px;
+  display: flex;
+  align-items: center;
 }
 
 .register-button:hover {
@@ -30,8 +33,11 @@
   font-family: "Poppins", sans-serif;
   border-radius: 0.5rem;
   cursor: pointer;
-  width: 160px;
+  min-width: 160px;
+  width: auto;
   height: 46px;
+  display: flex;
+  align-items: center;
 }
 
 .presentation-part-1-background {

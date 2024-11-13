@@ -4,6 +4,7 @@ import "animate.css";
 import "@/app/globals.css";
 import "@/app/index-page.css";
 import "@/app/animations.css";
+import "@/app/portal.css";
 import "@/app/login.css";
 import {
   METADATA_DEFAULT_TITLE,
@@ -16,6 +17,8 @@ import {
   METADATA_TITLE_TEMPLATE,
 } from "@constants/metadata";
 import IndexFooter from "./components/IndexFooter";
+import IndexHeader from "./components/IndexHeader";
+import { Toaster } from "react-hot-toast";
 
 const BCSC_MAIN_FONT = localFont({
   src: "./fonts/Kamerik-105-W00-Bold.ttf",
@@ -48,6 +51,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${BCSC_MAIN_FONT.className}`}>
+        <IndexHeader />
+        <Toaster position="bottom-center" />
         {children}
         <IndexFooter />
       </body>

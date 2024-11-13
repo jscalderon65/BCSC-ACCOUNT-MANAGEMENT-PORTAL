@@ -4,47 +4,40 @@ import Image from "next/image";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { MdClose, MdShield, MdAccessibility } from "react-icons/md";
 import { IconType } from "react-icons";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
+import { INDEX_APP_ROUTE } from "@constants/app-config";
+import Link from "next/link";
 
-type IndexHeaderProps = {
-  showButtons?: boolean;
-};
-
-const IndexHeader: React.FC<IndexHeaderProps> = ({ showButtons = true }) => {
+const IndexHeader: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
-  const router = useRouter();
-
-  const redirectTo = (path: string): void => {
-    router.push(path);
-  };
+  const pathname = usePathname();
 
   const Logo: React.FC = () => (
-    <Image
-      className="cursor-pointer"
-      onClick={(): void => redirectTo("/")}
-      src="/images/index-header-logo.png"
-      alt="index-header-logo.png"
-      width={200}
-      height={56}
-      priority
-    />
+    <Link href={INDEX_APP_ROUTE}>
+      <Image
+        className="cursor-pointer"
+        src="/images/index-header-logo.png"
+        alt="index-header-logo.png"
+        width={200}
+        height={56}
+        priority
+      />
+    </Link>
   );
 
   const NavButtons: React.FC = () =>
-    showButtons ? (
+    pathname === INDEX_APP_ROUTE ? (
       <>
-        <button
-          onClick={(): void => redirectTo("/login")}
-          className="register-button md:mr-[10px]"
-        >
-          Ingrese aquí
-        </button>
-        <button
-          onClick={(): void => redirectTo("/register")}
-          className="account-button"
-        >
-          Abrir Caja Plus
-        </button>
+        <Link href="/login">
+          <button className="register-button md:mr-[10px] justify-center font-bold">
+            <p>Ingrese aquí</p>
+          </button>
+        </Link>
+        <Link href="/register">
+          <button className="account-button bold justify-center font-bold">
+            <p>Abrir Caja Plus</p>
+          </button>
+        </Link>
       </>
     ) : null;
 
@@ -68,7 +61,7 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ showButtons = true }) => {
   const MobileMenu: React.FC = () => {
     if (!isMenuOpen) return null;
 
-    return (
+    return pathname === INDEX_APP_ROUTE ? (
       <div className="fixed inset-0 main-background flex justify-center z-50 overflow-hidden">
         <div className="main-container w-[80vw]">
           <div className="flex justify-between">
@@ -90,7 +83,7 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ showButtons = true }) => {
           </div>
         </div>
       </div>
-    );
+    ) : null;
   };
 
   return (
@@ -101,11 +94,13 @@ const IndexHeader: React.FC<IndexHeaderProps> = ({ showButtons = true }) => {
         <div className="hidden md:flex">
           <NavButtons />
         </div>
-        <div className="flex md:hidden">
-          <button onClick={() => setIsMenuOpen(true)}>
-            <GiHamburgerMenu className="w-[30px] h-[30px]" />
-          </button>
-        </div>
+        {pathname === INDEX_APP_ROUTE ? (
+          <div className="flex md:hidden">
+            <button onClick={() => setIsMenuOpen(true)}>
+              <GiHamburgerMenu className="w-[30px] h-[30px]" />
+            </button>
+          </div>
+        ) : null}
       </div>
 
       <MobileMenu />

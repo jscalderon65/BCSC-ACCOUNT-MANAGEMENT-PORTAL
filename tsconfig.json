@@ -46,6 +46,9 @@
       ],
       "@interfaces/*": [
         "./src/app/common/interfaces/*"
+      ],
+      "@helpers/*": [
+        "./src/app/common/helpers/*"
       ]
     }
   },
